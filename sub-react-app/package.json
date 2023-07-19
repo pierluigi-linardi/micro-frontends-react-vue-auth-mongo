@@ -1,0 +1,28 @@
+{
+    "name": "sub_a",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "webpack serve --config webpack.config.js"
+    },
+    "dependencies": {
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
+        "jwt-decode": "^3.1.2",
+        "bootstrap": "^5.3.0",
+        "react-bootstrap": "^2.8.0",
+        "react-router-dom": "^6.14.1"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.12.3",
+        "@babel/plugin-transform-runtime": "^7.12.1",
+        "@babel/preset-env": "^7.12.1",
+        "@babel/preset-react": "^7.12.1",
+        "babel-loader": "^8.1.0",
+        "html-webpack-plugin": "^4.5.0",
+        "webpack": "^5.4.0",
+        "webpack-cli": "^4.1.0",
+        "webpack-dev-server": "^3.11.0",
+        "css-loader": "^6.8.1",
+        "style-loader": "^3.3.3"
+    }
+}
