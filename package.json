@@ -1,0 +1,17 @@
+{
+  "name": "micro-frontends-react-vue-auth-mongo",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "server": "cd ./server && npm start",
+    "sub-react-app": "cd ./sub-react-app && npm start",
+    "sub-vue-app": "cd ./sub-vue-app && npm start",
+    "master-app": "cd ./master-app && npm start",
+    "start": "concurrently \"npm run server\" \"npm run sub-react-app\" \"npm run sub-vue-app\" \"npm run master-app\""
+  },
+  "author": "Pierlugi Linardi",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}

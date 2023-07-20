@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, Navigate } from 'react-router-dom'
 import httpClient from './httpClient'
 
 import NavBar from './NavBar'
@@ -43,6 +43,10 @@ const App = () => {
                     <Route path="/" element={<Home token={httpClient.getToken()} />}></Route>
                     <Route path="/react" element={<SubReactApp token={httpClient.getToken()} />}></Route>
                     <Route path="/vue" element={<SubVueApp token={httpClient.getToken()} />}></Route>
+                    <Route
+                        path="*"
+                        element={<Navigate to="/" replace />}
+                    />
                 </Routes>
 
             </div>
