@@ -8,13 +8,17 @@ import Page1 from './components/page1'
 import Page2 from './components/page2'
 import Component1 from './components/component1'
 import { Outlet, Link } from "react-router-dom";
-export default ({ token }) => {
+export default () => {
     const [state, setState] = useState(null);
+    const [token, setToken] = useState(null);
     useEffect(() => {
+        let token = localStorage.getItem('token');
         if (token) {
             let decode = jwtDecode(token);
             setState(decode);
+
         }
+        setToken(token);
     }, [token])
 
     return (<>

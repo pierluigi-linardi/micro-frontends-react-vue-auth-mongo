@@ -7,15 +7,16 @@ export default {
     Component1,
     Component2,
   },
-  props: ['token'],
+
   data() {
     let decode = null;
-    if (this.token) {
-      decode = jwtDecode(this.token);
+    let token = localStorage.getItem('token');
+    if (token) {
+      decode = jwtDecode(token);
     }
     return {
       user: decode ? decode.email : null,
-
+      token: token
     }
   }
 }

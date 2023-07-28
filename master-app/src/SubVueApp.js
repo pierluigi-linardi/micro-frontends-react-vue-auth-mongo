@@ -1,10 +1,10 @@
 import { mount } from 'vueapp/VueApp';
 import React, { useRef, useEffect } from 'react';
-export default ({ token }) => {
+export default () => {
     const ref = useRef(null);
 
     useEffect(() => {
-        mount(ref.current, token);
+        mount(ref.current);
     }, []);
     return <div ref={ref} />;
 };

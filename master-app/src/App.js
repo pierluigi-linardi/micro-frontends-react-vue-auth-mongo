@@ -40,16 +40,16 @@ const App = () => {
                     <Route path="/logout" element={<LogOut onLogOut={logOut} />}></Route>
                     <Route path="/signup" element={<SignUp onSignUpSuccess={onLoginSuccess} />}></Route>
                     <Route path="/vip" element={<VIP />}></Route>
-                    <Route path="/" element={<Home token={httpClient.getToken()} />}></Route>
-                    <Route path="/react" element={<SubReactApp token={httpClient.getToken()} />}></Route>
-                    <Route path="/vue" element={<SubVueApp token={httpClient.getToken()} />}></Route>
+                    <Route path="/" element={<Home />}></Route>
+                    <Route path="/react" element={<SubReactApp />}></Route>
+                    <Route path="/vue" element={<SubVueApp />}></Route>
                     <Route
                         path="*"
                         element={<Navigate to="/" replace />}
                     />
                 </Routes>
 
-            </div>
+            </div >
 
         </>);
 }
