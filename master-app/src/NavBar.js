@@ -15,15 +15,10 @@ const NavBar = (props) => {
 							<Nav.Link href="/vue">Vue</Nav.Link>
 						</Nav>
 						<Nav className="me-auto">
-							{props.currentUser
-								? (<>
-									<Nav.Link href="/vip">VIP</Nav.Link>
-								</>
-								)
-								: (<>
+							{!props.currentUser &&
+								<>
 									<Nav.Link href="/login">Log In</Nav.Link>
 									<Nav.Link href="/signup">Sign Up</Nav.Link></>
-								)
 							}
 						</Nav>
 					</Navbar.Collapse>

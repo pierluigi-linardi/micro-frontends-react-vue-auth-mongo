@@ -6,7 +6,6 @@ import NavBar from './NavBar'
 import LogIn from './views/LogIn'
 import LogOut from './views/LogOut'
 import SignUp from './views/SignUp'
-import VIP from './views/VIP'
 import Home from './views/Home'
 import { useEffect, useState } from 'react'
 const SubReactApp = lazy(() => {
@@ -39,7 +38,6 @@ const App = () => {
                     <Route path="/login" element={<LogIn onLoginSuccess={onLoginSuccess} />}></Route>
                     <Route path="/logout" element={<LogOut onLogOut={logOut} />}></Route>
                     <Route path="/signup" element={<SignUp onSignUpSuccess={onLoginSuccess} />}></Route>
-                    <Route path="/vip" element={<VIP />}></Route>
                     <Route path="/" element={<Home />}></Route>
                     <Route path="/react" element={<SubReactApp />}></Route>
                     <Route path="/vue" element={<SubVueApp />}></Route>
