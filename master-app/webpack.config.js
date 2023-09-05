@@ -1,15 +1,14 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
-const port = 8080;
-
+const port = 8080
 module.exports = {
     mode: 'development',
     output: {
         publicPath: `http://localhost:${port}/`,
     },
     devServer: {
-        port: port,
+        port: 8080,
         historyApiFallback: true,
     },
     module: {

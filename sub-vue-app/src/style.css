@@ -1,3 +1,9 @@
-*, ::before, ::after {
+*,
+::before,
+::after {
   box-sizing: border-box;
+}
+
+.test {
+  background-color: yellow;
 }

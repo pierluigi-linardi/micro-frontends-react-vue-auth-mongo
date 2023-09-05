@@ -4,8 +4,6 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router } from 'react-router-dom'
 const mount = (element) => {
-    alert('mount react')
-
     ReactDOM.render(<Router><App /></Router>, element);
 };
 // If we are in development and in isolation, call mount immediately

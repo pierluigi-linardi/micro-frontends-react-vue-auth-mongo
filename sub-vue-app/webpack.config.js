@@ -28,7 +28,6 @@ module.exports = (env, argv) => {
     devServer: {
       static: dist,
       port: 8082,
-      // to be able to visit dev server from phones and other computers in your network
       allowedHosts: 'all',
       historyApiFallback: true,
     },

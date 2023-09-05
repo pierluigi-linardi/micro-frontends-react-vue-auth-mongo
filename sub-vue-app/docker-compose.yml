@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  sub-vue-app:
+    container_name: sub-vue-app
+    image: plinardi/sub-vue-app:1.0
+    build:
+      context: .
+    ports:
+      - "8082:8082"

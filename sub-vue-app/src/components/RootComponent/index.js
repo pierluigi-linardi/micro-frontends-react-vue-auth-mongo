@@ -9,13 +9,16 @@ export default {
   },
 
   data() {
-    let decode = null;
     let token = localStorage.getItem('token');
+    let decode = null;
     if (token) {
-      decode = jwtDecode(token);
+      if (token) {
+        decode = jwtDecode(token);
+      }
+
     }
     return {
-      user: decode ? decode.email : null,
+      user: decode?.email,
       token: token
     }
   }

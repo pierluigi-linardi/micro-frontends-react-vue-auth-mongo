@@ -1,8 +1,7 @@
 //https://medium.com/paloit/a-beginners-guide-to-micro-frontends-with-webpack-module-federation-712f3855f813
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
-
-const port = 8081;
+const port = 8081
 module.exports = {
     mode: 'development',
     output: {

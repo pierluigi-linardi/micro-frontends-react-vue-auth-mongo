@@ -2,26 +2,24 @@ const
 	dotenv = require('dotenv').load(),
 	express = require('express'),
 	app = express(),
-	logger = require('morgan'),
 	bodyParser = require('body-parser'),
 	mongoose = require('mongoose'),
-	MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/react-express-jwt',
+	MONGODB_HOST = process.env.MONGODB_HOST || 'mongodb://localhost:27017/mfe',
 	PORT = process.env.PORT || 3001,
 	usersRoutes = require('./routes/users.js')
 
 
 const cors = require('cors');
 mongoose.set('useCreateIndex', true)
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, (err) => {
-	console.log(err || `Connected to MongoDB.`)
+mongoose.connect(MONGODB_HOST, { useNewUrlParser: true }, (err) => {
+	console.log(`MongoDB Connected`)
 })
 app.use(cors());
 app.use(express.static(`${__dirname}/client/build`))
-app.use(logger('dev'))
 app.use(bodyParser.json())
 
 app.get('/api', (req, res) => {
-	res.json({ message: "API root." })
+	res.json({ message: "API/" })
 })
 
 app.use('/api/users', usersRoutes)

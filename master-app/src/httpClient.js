@@ -57,7 +57,6 @@ httpClient.logOut = function () {
 	return true
 }
 
-// During initial app load attempt to set a localStorage stored token
-// as a default header for all api requests.
+
 httpClient.defaults.headers.common.token = httpClient.getToken()
 export default httpClient
