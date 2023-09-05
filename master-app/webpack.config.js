@@ -8,6 +8,7 @@ module.exports = {
         publicPath: `http://localhost:${port}/`,
     },
     devServer: {
+        open: true,
         port: 8080,
         historyApiFallback: true,
     },
