@@ -1,13 +1,25 @@
 # micro-frontends-react-vue-auth-mongo
 
-```
-
-cd server
-npm install
-
-cd server
-npm install
-
-npm run start --prefix ./server && npm run start --prefix ./sub-react-app && npm run start --prefix ./sub-vue-app/ && npm run start --prefix ./master-app/
+modify the property "MONGODB_HOST" in ./server/.env file to set the 
 
 ```
+cd server
+npm install
+cd ..
+
+cd sub-react-app
+npm install
+cd ..
+
+cd sub-vue-app
+npm install
+cd ..
+
+cd master-app
+npm install
+cd ..
+
+npm start
+
+```
+ 
