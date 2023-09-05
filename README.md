@@ -1,6 +1,6 @@
 # micro-frontends-react-vue-auth-mongo
 
-modify the property "MONGODB_HOST" in ./server/.env file to set the 
+modify the environment variable "MONGODB_HOST" in ./server/.env file to set the mongo connection string
 
 ```
 cd server
@@ -19,6 +19,7 @@ cd master-app
 npm install
 cd ..
 
+npm install
 npm start
 
 ```

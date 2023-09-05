@@ -23,7 +23,6 @@ const LogIn = (props) => {
 	const onFormSubmit = (evt) => {
 		evt.preventDefault()
 		httpClient.logIn(state.fields).then(user => {
-			setState({ fields: { email: '', password: '' } })
 			if (user) {
 				props.onLoginSuccess(user)
 				navigate("/");
