@@ -3,6 +3,11 @@
 modify the environment variable "MONGODB_HOST" in ./server/.env file to set the mongo connection string
 
 ```
+copy the ./master-app/env.sample to ./master-app/.env
+replace the MASTER_TOKEN value
+
+copy the ./sub-react-app/env.sample to ./sub-react-app/.env
+replace the CREATE_CONTENT_REQUEST_URL value
 
 cd sub-react-app
 npm install
