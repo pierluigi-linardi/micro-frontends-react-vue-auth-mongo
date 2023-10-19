@@ -11,7 +11,6 @@ module.exports = {
         filename: "main.[contenthash].js",
         clean: true,
         path: path.resolve(__dirname, "build"),
-        publicPath: '/',
     },
     module: {
         rules: [

@@ -9,17 +9,19 @@ import Page2 from './components/page2'
 import Component1 from './components/component1'
 import { Outlet, Link } from "react-router-dom";
 export default () => {
-    const [state, setState] = useState(null);
-    const [token, setToken] = useState(null);
+    const [state, setState] = useState<{
+        email: string
+    } | null>(null);
+    const [token, setToken] = useState<string | null>(null);
     useEffect(() => {
         let token = localStorage.getItem('token');
-        debugger;
         if (token) {
             let decode = jwt_decode(token);
-            //setState(decode);
+            setToken(token);
+
+            setState(decode as { email: string });
 
         }
-        //setToken(token);
     }, [token])
 
     return (<>
@@ -53,7 +55,7 @@ export default () => {
                 <Card.Body>
                     <Card.Title>User</Card.Title>
                     <Card.Text>
-                        {/* {state?.email} */}
+                        {state?.email}
                     </Card.Text>
                 </Card.Body>
             </Card>

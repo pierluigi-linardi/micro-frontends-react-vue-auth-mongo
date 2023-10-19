@@ -1,6 +1,10 @@
 import { Container, Nav, NavDropdown, Navbar, Stack } from 'react-bootstrap'
 import React from 'react';
-const NavBar = (props) => {
+import { IUser } from './model/IUser';
+interface INavBarProps {
+	currentUser: IUser | null
+}
+const NavBar = (props: INavBarProps) => {
 	return (
 		<>
 

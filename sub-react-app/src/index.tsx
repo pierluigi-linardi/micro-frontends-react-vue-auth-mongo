@@ -9,7 +9,6 @@ const mount = (element: HTMLElement) => {
     root.render(<BrowserRouter><App /></BrowserRouter>);
 };
 // If we are in development and in isolation, call mount immediately
-debugger;
 if (process.env.NODE_ENV === 'development') {
 
     const devRoot = document.getElementById('_sub-a-root');

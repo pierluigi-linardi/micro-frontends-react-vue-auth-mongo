@@ -13,7 +13,7 @@ interface ILogInProps {
 const LogIn = (props: ILogInProps) => {
 	const navigate = useNavigate();
 	const [state, setState] = useState({
-		fields: { email: '', password: '' }
+		fields: {} as IUser
 	});
 
 	const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {

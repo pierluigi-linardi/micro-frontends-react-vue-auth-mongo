@@ -13,8 +13,8 @@ interface ISignUpProps {
 // sign up form behaves almost identically to log in form. We could create a flexible Form component to use for both actions, but for now we'll separate the two:
 const SignUp = (props: ISignUpProps) => {
 	const navigate = useNavigate();
-	const [state, setState] = useState({
-		fields: { email: '', password: '' }
+	const [state, setState] = useState<{ fields: IUser }>({
+		fields: {} as IUser
 	});
 
 	const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {

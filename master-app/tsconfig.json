@@ -104,5 +104,8 @@
   ],
   "exclude": [
     "node_modules"
+  ],
+  "files": [
+    "index.d.ts"
   ]
 }
