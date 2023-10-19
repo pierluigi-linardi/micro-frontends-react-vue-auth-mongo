@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import jwtDecode from 'jwt-decode'
+import jwt_decode from 'jwt-decode'
 import Badge from 'react-bootstrap/Badge';
 import Card from 'react-bootstrap/Card';
 import { Stack } from 'react-bootstrap'
@@ -9,16 +9,19 @@ import Page2 from './components/page2'
 import Component1 from './components/component1'
 import { Outlet, Link } from "react-router-dom";
 export default () => {
-    const [state, setState] = useState(null);
-    const [token, setToken] = useState(null);
+    const [state, setState] = useState<{
+        email: string
+    } | null>(null);
+    const [token, setToken] = useState<string | null>(null);
     useEffect(() => {
         let token = localStorage.getItem('token');
         if (token) {
-            let decode = jwtDecode(token);
-            setState(decode);
+            let decode = jwt_decode(token);
+            setToken(token);
+
+            setState(decode as { email: string });
 
         }
-        setToken(token);
     }, [token])
 
     return (<>

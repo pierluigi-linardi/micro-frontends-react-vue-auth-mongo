@@ -1,39 +1,54 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const path = require("path");
+const webpack = require('webpack');
 
 const port = 8080
 module.exports = {
-    mode: 'development',
+    entry: ['./src/index.tsx'],
     output: {
-        publicPath: `http://localhost:${port}/`,
-    },
-    devServer: {
-        open: true,
-        port: 8080,
-        historyApiFallback: true,
+        filename: "main.[contenthash].js",
+        clean: true,
+        path: path.resolve(__dirname, "build"),
+        publicPath: '/',
     },
     module: {
         rules: [
+            // `js` and `jsx` files are parsed using `babel`
             {
-                test: /\.m?js$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-react', '@babel/preset-env'],
-                        plugins: ['@babel/plugin-transform-runtime'],
-                    },
-                },
+                use: ["babel-loader"],
+            },
+            // `ts` and `tsx` files are parsed using `ts-loader`
+            {
+                test: /\.(ts|tsx)$/,
+                loader: "ts-loader"
+            },
+            // Styles: Inject CSS into the head with source maps
+            {
+                test: /\.(css)$/,
+                use: [
+                    'style-loader',
+                    { loader: 'css-loader', options: { sourceMap: true, importLoaders: 1 } }
+                ],
             },
             {
                 test: /\.(png|jpg|jpeg|gif)$/i,
                 type: "asset/resource",
-            },
-            {
-                test: /\.css$/i,
-                use: ["style-loader", "css-loader"],
-            },
+            }
         ],
+    },
+    resolve: {
+        extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],
+    },
+    devServer: {
+        static: {
+            directory: path.join(__dirname, "public"),
+        },
+        port: port,
+        historyApiFallback: true,
+        open: true,
     },
     plugins: [
         new ModuleFederationPlugin({
@@ -44,7 +59,10 @@ module.exports = {
             },
         }),
         new HtmlWebpackPlugin({
-            template: './public/index.html',
+            template: path.join(__dirname, "public", "index.html"),
+        }),
+        new webpack.DefinePlugin({
+            'process.env': JSON.stringify(process.env)
         }),
     ],
 };

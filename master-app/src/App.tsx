@@ -8,21 +8,18 @@ import LogOut from './views/LogOut'
 import SignUp from './views/SignUp'
 import Home from './views/Home'
 import { useEffect, useState } from 'react'
-const SubReactApp = lazy(() => {
-    return import('./SubReactApp');
-});
+import { IUser } from './model/IUser';
+import SubReactApp from './SubReactApp';
+import SubVueApp from './SubVueApp';
 
-const SubVueApp = lazy(() => {
-    return import('./SubVueApp');
-});
 
 const App = () => {
-    const [state, setState] = useState(null);
+    const [state, setState] = useState<{ currentUser: IUser | null }>({ currentUser: null });
     useEffect(() => {
         setState({ currentUser: httpClient.getCurrentUser() });
     }, []);
 
-    const onLoginSuccess = (user) => {
+    const onLoginSuccess = () => {
         setState({ currentUser: httpClient.getCurrentUser() })
     }
 
@@ -39,8 +36,12 @@ const App = () => {
                     <Route path="/logout" element={<LogOut onLogOut={logOut} />}></Route>
                     <Route path="/signup" element={<SignUp onSignUpSuccess={onLoginSuccess} />}></Route>
                     <Route path="/" element={<Home />}></Route>
-                    <Route path="/react" element={<SubReactApp />}></Route>
-                    <Route path="/vue" element={<SubVueApp />}></Route>
+                    <Route path="/react" element={<Suspense fallback={<div>Loading...</div>}>
+                        <SubReactApp />
+                    </Suspense>}></Route>
+                    <Route path="/vue" element={<Suspense fallback={<div>Loading...</div>}>
+                        <SubVueApp />
+                    </Suspense>}></Route>
                     <Route
                         path="*"
                         element={<Navigate to="/" replace />}

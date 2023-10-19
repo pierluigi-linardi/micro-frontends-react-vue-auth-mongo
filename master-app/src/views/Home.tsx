@@ -1,24 +1,23 @@
 import React, { lazy, Suspense } from 'react';
-const SubReactApp = lazy(() => {
-	return import('../SubReactApp');
-});
+import SubReactApp from '../SubReactApp';
+import SubVueApp from '../SubVueApp';
 
-const SubVueApp = lazy(() => {
-	return import('../SubVueApp');
-});
 
-const Home = ({ token }) => {
+interface IHomeProps {
+}
+
+const Home = (props: IHomeProps) => {
 	return (
 		<>
 
 			<div style={{ borderStyle: 'solid' }}>
 				<Suspense fallback={<div>Loading...</div>}>
-					<SubReactApp token={token} />
+					<SubReactApp />
 				</Suspense>
 			</div>
 			<div style={{ borderStyle: 'solid', marginTop: '10px' }}>
 				<Suspense fallback={<div>Loading...</div>}>
-					<SubVueApp token={token} />
+					<SubVueApp />
 				</Suspense>
 			</div>
 

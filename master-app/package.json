@@ -1,29 +1,36 @@
 {
-    "name": "host",
+    "name": "master",
     "version": "1.0.0",
     "scripts": {
-        "start": "webpack serve --config webpack.config.js"
+        "start": "webpack serve --mode development"
     },
     "dependencies": {
         "axios": "^1.4.0",
+        "bootstrap": "^5.3.1",
+        "dotenv": "^16.3.1",
         "jwt-decode": "^3.1.2",
         "react": "^18.2.0",
-        "bootstrap": "^5.3.0",
-        "react-bootstrap": "^2.8.0",
+        "react-bootstrap": "^2.9.0",
         "react-dom": "^18.2.0",
-        "react-router-dom": "^6.14.1"
+        "react-router-dom": "^6.14.2",
+        "validator": "^13.11.0"
     },
     "devDependencies": {
-        "@babel/core": "^7.12.3",
-        "@babel/plugin-transform-runtime": "^7.12.1",
-        "@babel/preset-env": "^7.12.1",
-        "@babel/preset-react": "^7.12.1",
-        "babel-loader": "^8.1.0",
-        "html-webpack-plugin": "^4.5.0",
-        "webpack": "^5.4.0",
-        "webpack-cli": "^4.1.0",
-        "webpack-dev-server": "^3.11.0",
+        "@babel/core": "^7.22.9",
+        "@babel/preset-env": "^7.22.9",
+        "@babel/preset-react": "^7.22.5",
+        "@types/jest": "^29.5.3",
+        "@types/node": "^20.4.5",
+        "@types/react": "^18.2.17",
+        "@types/react-dom": "^18.2.7",
+        "babel-loader": "^9.1.3",
         "css-loader": "^6.8.1",
-        "style-loader": "^3.3.3"
+        "html-webpack-plugin": "^5.5.3",
+        "style-loader": "^3.3.3",
+        "ts-loader": "^9.4.4",
+        "typescript": "^5.1.6",
+        "webpack": "^5.88.2",
+        "webpack-cli": "^5.1.4",
+        "webpack-dev-server": "^4.15.1"
     }
 }
