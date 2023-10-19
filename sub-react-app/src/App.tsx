@@ -33,8 +33,8 @@ export default () => {
         if (dafneUserData) {
             setContent({
                 ...content,
-                chainId: dafneUserData.metaMask.chainId,
-                owner: dafneUserData.metaMask.account,
+                chainId: dafneUserData?.metaMask?.chainId,
+                owner: dafneUserData?.metaMask?.account,
             });
             setToken(dafneUserData.token);
             setViewState({ ...viewState, user: dafneUserData.userName ?? '' });
