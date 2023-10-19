@@ -7,5 +7,5 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const container = document.getElementById("_host-root");
-const root = createRoot(container);
+const root = createRoot(container!);
 root.render(<Router><App /></Router>);

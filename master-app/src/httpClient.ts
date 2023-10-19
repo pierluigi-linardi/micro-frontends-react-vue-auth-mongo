@@ -2,33 +2,31 @@ import axios from 'axios'
 import jwtDecode from 'jwt-decode'
 
 // instantiate axios
-const httpClient = axios.create();
-
-httpClient.getToken = function () {
+const axiosInstance = axios.create();
+const getToken = () => {
 	return localStorage.getItem('token')
 }
 
-httpClient.setToken = function (token) {
+const setToken = (token: any) => {
 	localStorage.setItem('token', token)
 	return token
 }
 
-httpClient.getCurrentUser = function () {
-	const token = this.getToken()
+const getCurrentUser = () => {
+	const token = getToken()
 	if (token) {
-
 		return jwtDecode(token);
 	}
 	return null;
 }
 
-httpClient.logIn = function (credentials) {
-	return this({ method: 'post', url: 'http://localhost:3001/api/users/authenticate', data: credentials })
+const logIn = function (credentials: any) {
+	return axiosInstance({ method: 'post', url: 'http://localhost:3001/api/users/authenticate', data: credentials })
 		.then((serverResponse) => {
 			const token = serverResponse.data.token
 			if (token) {
 				// sets token as an included header for all subsequent api requests
-				this.defaults.headers.common.token = this.setToken(token)
+				axiosInstance.defaults.headers.common.token = setToken(token)
 				return jwtDecode(token)
 			} else {
 				alert('invalid credentials');
@@ -39,14 +37,14 @@ httpClient.logIn = function (credentials) {
 }
 
 // logIn and signUp functions could be combined into one since the only difference is the url we're sending a request to..
-httpClient.signUp = function (userInfo) {
+const signUp = (userInfo: any) => {
 	console.log('Signin...');
-	return this({ method: 'post', url: 'http://localhost:3001/api/users', data: userInfo })
+	return axiosInstance({ method: 'post', url: 'http://localhost:3001/api/users', data: userInfo })
 		.then((serverResponse) => {
 			const token = serverResponse.data.token
 			if (token) {
 				// sets token as an included header for all subsequent api requests
-				this.defaults.headers.common.token = this.setToken(token)
+				axiosInstance.defaults.headers.common.token = setToken(token)
 				return jwtDecode(token)
 			} else {
 				return false
@@ -54,12 +52,16 @@ httpClient.signUp = function (userInfo) {
 		})
 }
 
-httpClient.logOut = function () {
+const logOut = () => {
 	localStorage.removeItem('token')
-	delete this.defaults.headers.common.token
+	delete axiosInstance.defaults.headers.common.token
 	return true
 }
 
 
-httpClient.defaults.headers.common.token = httpClient.getToken()
+axiosInstance.defaults.headers.common.token = getToken()
+const httpClient =
+{
+	getToken, setToken, logIn, logOut, signUp, getCurrentUser
+}
 export default httpClient

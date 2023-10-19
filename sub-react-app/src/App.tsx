@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import jwtDecode from 'jwt-decode'
+import jwt_decode from 'jwt-decode'
 import Badge from 'react-bootstrap/Badge';
 import Card from 'react-bootstrap/Card';
 import { Stack } from 'react-bootstrap'
@@ -13,12 +13,13 @@ export default () => {
     const [token, setToken] = useState(null);
     useEffect(() => {
         let token = localStorage.getItem('token');
+        debugger;
         if (token) {
-            let decode = jwtDecode(token);
-            setState(decode);
+            let decode = jwt_decode(token);
+            //setState(decode);
 
         }
-        setToken(token);
+        //setToken(token);
     }, [token])
 
     return (<>
@@ -52,7 +53,7 @@ export default () => {
                 <Card.Body>
                     <Card.Title>User</Card.Title>
                     <Card.Text>
-                        {state?.email}
+                        {/* {state?.email} */}
                     </Card.Text>
                 </Card.Body>
             </Card>

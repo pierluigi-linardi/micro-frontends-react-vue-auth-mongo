@@ -3,15 +3,20 @@ import { useState } from 'react';
 import httpClient from '../httpClient'
 import { useNavigate } from "react-router-dom";
 import { Button, Form } from 'react-bootstrap';
+import { IUser } from '../model/IUser';
 
+interface ILogInProps {
+	onLoginSuccess: (user: IUser) => void;
 
-const LogIn = (props) => {
+}
+
+const LogIn = (props: ILogInProps) => {
 	const navigate = useNavigate();
 	const [state, setState] = useState({
 		fields: { email: '', password: '' }
 	});
 
-	const onInputChange = (evt) => {
+	const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
 		setState({
 			fields: {
 				...state.fields,
@@ -20,7 +25,7 @@ const LogIn = (props) => {
 		})
 	}
 
-	const onFormSubmit = (evt) => {
+	const onFormSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
 		evt.preventDefault()
 		httpClient.logIn(state.fields).then(user => {
 			if (user) {

@@ -3,15 +3,21 @@ import { useState } from 'react';
 import httpClient from '../httpClient'
 import { useNavigate } from "react-router-dom";
 import { Button, Form } from 'react-bootstrap';
+import { IUser } from '../model/IUser';
+
+interface ISignUpProps {
+	onSignUpSuccess: (user: IUser) => void;
+
+}
 
 // sign up form behaves almost identically to log in form. We could create a flexible Form component to use for both actions, but for now we'll separate the two:
-const SignUp = (props) => {
+const SignUp = (props: ISignUpProps) => {
 	const navigate = useNavigate();
 	const [state, setState] = useState({
 		fields: { email: '', password: '' }
 	});
 
-	const onInputChange = (evt) => {
+	const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
 		setState({
 			fields: {
 				...state.fields,
@@ -20,7 +26,7 @@ const SignUp = (props) => {
 		})
 	}
 
-	const onFormSubmit = (evt) => {
+	const onFormSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
 		evt.preventDefault()
 		httpClient.signUp(state.fields).then(user => {
 			setState({ fields: { email: '', password: '' } })
