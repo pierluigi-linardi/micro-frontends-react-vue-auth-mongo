@@ -1,40 +1,39 @@
 import React, { lazy, Suspense } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom'
-import httpClient from './httpClient'
 
 import NavBar from './NavBar'
-import LogIn from './views/LogIn'
-import LogOut from './views/LogOut'
-import SignUp from './views/SignUp'
 import Home from './views/Home'
 import { useEffect, useState } from 'react'
-import { IUser } from './model/IUser';
 import SubReactApp from './SubReactApp';
 import SubVueApp from './SubVueApp';
+import { IUserSession } from './model/IUserSession';
+import LocalStorageHelper from './helpers/local-storage-helper';
 
 
 const App = () => {
-    const [state, setState] = useState<{ currentUser: IUser | null }>({ currentUser: null });
+    const [state, setState] = useState<{ currentUser: IUserSession | null }>({ currentUser: null });
     useEffect(() => {
-        setState({ currentUser: httpClient.getCurrentUser() });
+        const storage = {
+            userName: 'test-user',
+            token: process.env.MASTER_TOKEN,
+            metaMask:
+            {
+                chainId: 80001,
+                account: '0x03c836f5e6376a333134248bf27234cc041b3430'
+            }
+        } as IUserSession;
+        LocalStorageHelper.setUserSession(
+            storage
+        );
+        setState({ currentUser: storage })
     }, []);
 
-    const onLoginSuccess = () => {
-        setState({ currentUser: httpClient.getCurrentUser() })
-    }
 
-    const logOut = () => {
-        httpClient.logOut()
-        setState({ currentUser: null })
-    }
     return (
         <>
             <div className='App container'>
-                <NavBar currentUser={state?.currentUser} />
+                <NavBar />
                 <Routes>
-                    <Route path="/login" element={<LogIn onLoginSuccess={onLoginSuccess} />}></Route>
-                    <Route path="/logout" element={<LogOut onLogOut={logOut} />}></Route>
-                    <Route path="/signup" element={<SignUp onSignUpSuccess={onLoginSuccess} />}></Route>
                     <Route path="/" element={<Home />}></Route>
                     <Route path="/react" element={<Suspense fallback={<div>Loading...</div>}>
                         <SubReactApp />

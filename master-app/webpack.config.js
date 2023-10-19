@@ -2,8 +2,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const path = require("path");
 const webpack = require('webpack');
-
 const port = 8080
+const Dotenv = require("dotenv");
+Dotenv.config();
 module.exports = {
     entry: ['./src/index.tsx'],
     output: {
@@ -36,7 +37,8 @@ module.exports = {
             {
                 test: /\.(png|jpg|jpeg|gif)$/i,
                 type: "asset/resource",
-            }
+            },
+
         ],
     },
     resolve: {

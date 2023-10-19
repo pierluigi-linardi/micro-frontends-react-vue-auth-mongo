@@ -3,8 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const path = require("path");
 const webpack = require('webpack');
-
+const Dotenv = require("dotenv");
+Dotenv.config();
 const port = 8081
+
 module.exports = {
     entry: ['./src/index.ts'],
     output: {
@@ -13,6 +15,7 @@ module.exports = {
         path: path.resolve(__dirname, "build"),
     },
     module: {
+
         rules: [
             // `js` and `jsx` files are parsed using `babel`
             {

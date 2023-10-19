@@ -9,16 +9,16 @@ export default {
   },
 
   data() {
-    let token = localStorage.getItem('token');
-    let decode = null;
-    if (token) {
-      if (token) {
-        decode = jwtDecode(token);
-      }
+    const dafneUserData = JSON.parse(localStorage.getItem('dafne-user-data') ?? '{}');
 
+    let user = '';
+    let token = '';
+    if (dafneUserData) {
+      user = dafneUserData.userName;
+      token = dafneUserData.token;
     }
     return {
-      user: decode?.email,
+      user: user,
       token: token
     }
   }
