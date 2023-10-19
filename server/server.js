@@ -12,7 +12,10 @@ const
 const cors = require('cors');
 mongoose.set('useCreateIndex', true)
 mongoose.connect(MONGODB_HOST, { useNewUrlParser: true }, (err) => {
-	console.log(`MongoDB Connected`)
+	console.log(`MongoDB Connected: ${MONGODB_HOST}`)
+	if (err) {
+		console.log(err);
+	}
 })
 app.use(cors());
 app.use(express.static(`${__dirname}/client/build`))

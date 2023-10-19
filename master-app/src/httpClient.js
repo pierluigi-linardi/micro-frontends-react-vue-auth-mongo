@@ -40,6 +40,7 @@ httpClient.logIn = function (credentials) {
 
 // logIn and signUp functions could be combined into one since the only difference is the url we're sending a request to..
 httpClient.signUp = function (userInfo) {
+	console.log('Signin...');
 	return this({ method: 'post', url: 'http://localhost:3001/api/users', data: userInfo })
 		.then((serverResponse) => {
 			const token = serverResponse.data.token
