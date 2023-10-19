@@ -22,3 +22,7 @@ npm start
 ```
 
 Navigate to http://localhost:8080/react
+
+![image](https://github.com/pierluigi-linardi/micro-frontends-react-vue-auth-mongo/assets/15787703/b87c1570-9fb4-470c-b26c-d345e7ddeed9)
+
+
