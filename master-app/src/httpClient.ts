@@ -22,6 +22,7 @@ const getCurrentUser = (): IUser | null => {
 }
 
 const logIn = function (credentials: IUser) {
+	debugger;
 	return axiosInstance({ method: 'post', url: 'http://localhost:3001/api/users/authenticate', data: credentials })
 		.then((serverResponse) => {
 			const token = serverResponse.data.token
@@ -39,6 +40,7 @@ const logIn = function (credentials: IUser) {
 
 // logIn and signUp functions could be combined into one since the only difference is the url we're sending a request to..
 const signUp = (userInfo: IUser) => {
+	debugger;
 	console.log('Signin...');
 	return axiosInstance({ method: 'post', url: 'http://localhost:3001/api/users', data: userInfo })
 		.then((serverResponse) => {

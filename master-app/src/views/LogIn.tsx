@@ -26,6 +26,7 @@ const LogIn = (props: ILogInProps) => {
 	}
 
 	const onFormSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
+		debugger;
 		evt.preventDefault()
 		httpClient.logIn(state.fields).then(user => {
 			if (user) {

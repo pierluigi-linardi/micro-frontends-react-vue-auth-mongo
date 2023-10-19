@@ -4,7 +4,7 @@ export default () => {
     const ref = useRef(null);
 
     useEffect(() => {
-        mount(ref.current);
+        mount({ mountPoint: ref.current });
     }, []);
     return <div ref={ref} />;
 };

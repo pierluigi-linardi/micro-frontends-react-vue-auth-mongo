@@ -6,7 +6,7 @@ const webpack = require('webpack');
 
 const port = 8081
 module.exports = {
-    entry: ['./src/index.tsx'],
+    entry: ['./src/index.ts'],
     output: {
         filename: "main.[contenthash].js",
         clean: true,
@@ -60,7 +60,7 @@ module.exports = {
             name: 'reactapp',
             filename: 'remoteEntry.js',
             exposes: {
-                './ReactApp': './src/index',
+                './ReactApp': './src/bootstrap',
             },
         }),
     ],

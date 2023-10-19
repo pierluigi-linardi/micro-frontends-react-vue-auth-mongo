@@ -39,10 +39,8 @@ module.exports = (env, argv) => {
         name: 'vueapp',
         filename: 'remoteEntry.js',
         exposes: {
-          './VueApp': './src/index'
+          './VueApp': './src/bootstrap'
         },
-        //shared: require('./package.json').dependencies
-
       })
     ],
     module: {
